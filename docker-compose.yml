@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  client:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/client
+      - node_modules:/client/node_modules
+    stdin_open: true
+
+volumes:
+  node_modules:
