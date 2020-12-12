@@ -1,0 +1,41 @@
+dist: trusty
+language:
+  - node_js
+
+node_js:
+  - '12.18.4'
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "pamanda"
+    token: ${SONAR_TOKEN}
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - yarn install
+
+stages:
+  - Build
+  - Test
+  - Quality gate
+
+jobs:
+  include:
+    - stage: Build
+      name: Build
+      script:
+        - yarn build
+
+    - stage: Test
+      script:
+        - yarn run test:unit
+
+    - stage: Quality gate
+      script:
+        - sonar-scanner
