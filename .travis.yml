@@ -34,9 +34,11 @@ jobs:
         - yarn build
 
     - stage: Test
+      name: Test
       script:
         - yarn run test:unit --coverage
 
     - stage: Quality gate
+      name: Quality gate
       script:
         - sonar-scanner
