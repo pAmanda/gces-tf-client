@@ -16,6 +16,7 @@ addons:
 cache:
   directories:
     - node_modules
+    - coverage
 
 before_install:
   - yarn install
