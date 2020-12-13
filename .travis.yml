@@ -34,7 +34,7 @@ jobs:
 
     - stage: Test
       script:
-        - yarn run test:unit
+        - yarn run test:unit --coverage
 
     - stage: Quality gate
       script:
